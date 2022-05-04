@@ -1,0 +1,17 @@
+{
+  "name": "tourism",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:front": "cd frontend && npm i && npm run build",
+    "build:back": "cd backend && npm i && npm run build",
+    "build:copy": "cpx frontend/build/** backend/dist/build",
+    "build": "npm run build:front && npm run build:back && npm run build:copy",
+    "start": "cd backend && npm run start:prod"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0"
+  }
+}

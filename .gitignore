@@ -3,6 +3,7 @@
 # dependencies
 /backend/node_modules
 /frontend/node_modules
+/node_modules
 
 # production
 /backend/build
@@ -34,4 +35,5 @@
 # IDEs and editors
 /backend/.idea
 /frontend/.idea
+.idea
 
