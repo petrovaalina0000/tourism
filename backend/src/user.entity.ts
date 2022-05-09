@@ -8,6 +8,15 @@ export class User {
   @Column()
   login: string;
 
+  @Column({ nullable: true })
+  firstName: string;
+
+  @Column({ nullable: true })
+  lastName: string;
+
+  @Column({ default: 'USER' })
+  role: 'ADMIN' | 'USER';
+
   @Column()
   password: string;
 }

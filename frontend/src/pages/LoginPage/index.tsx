@@ -1,6 +1,7 @@
 import {FC, useContext} from "react";
-import {Button, Form, Input, notification} from "antd";
+import {Button, Col, Form, Input, notification, Row, Typography} from "antd";
 import {AuthContext} from "../../components/AuthProvider";
+import styles from './index.module.css';
 
 export const LoginPage: FC = () => {
   const [form] = Form.useForm();
@@ -21,11 +22,15 @@ export const LoginPage: FC = () => {
       } else {
         notification.error({message: data?.message})
       }
-      console.log(response, data);
     })
   }
 
-  return <Form form={form} layout='vertical'>
+  return <Row className={styles.container} align='middle'>
+    <Col span={8}/>
+    <Col flex={1}><Form form={form} layout='vertical' validateMessages={{required:'Поле обязательно для заполнения'}}>
+      <Form.Item noStyle>
+        <Typography.Title level={2}>Вход</Typography.Title><br/>
+      </Form.Item>
     <Form.Item name='login' label='Имя пользователя' rules={[{required: true}]}>
       <Input maxLength={50}/>
     </Form.Item>
@@ -36,4 +41,7 @@ export const LoginPage: FC = () => {
       <Button type='primary' onClick={handleClick}>Войти</Button>
     </Form.Item>
   </Form>
+  </Col>
+    <Col span={8}/>
+  </Row>
 }

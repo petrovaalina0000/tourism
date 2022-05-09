@@ -30,6 +30,8 @@ export class AuthService {
     login: string;
     password: string;
     passwordConfirm: string;
+    firstName?: string;
+    lastName?: string;
   }) {
     const user = await this.usersService.findOne(request.login);
     if (user) {
@@ -46,6 +48,9 @@ export class AuthService {
     const { password, ...rest } = await this.usersService.create({
       login: request.login,
       password: request.password,
+      role: 'USER',
+      firstName: request.firstName,
+      lastName: request.lastName,
     } as User);
 
     return rest;

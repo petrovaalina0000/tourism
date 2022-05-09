@@ -19,9 +19,10 @@ export const Header: FC = () => {
           <Col><Link to='/register'><Typography.Link>Зарегистрироваться</Typography.Link></Link></Col>
         </> :
         <>
-          <Dropdown overlay={<Menu><Menu.Item onClick={handleLogOut}>Выйти</Menu.Item></Menu>}>
+        <Col><Dropdown overlay={<Menu><Menu.Item onClick={handleLogOut}>Выйти</Menu.Item></Menu>}>
             <Typography.Link>Пользователь</Typography.Link>
           </Dropdown>
+        </Col>
         </>}
     </Row>
   </div>
