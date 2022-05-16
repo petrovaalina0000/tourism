@@ -1,6 +1,6 @@
 import {FC, useEffect, useState, createElement, useContext} from "react";
-import {Button, List, notification, Space} from "antd";
-import {StarOutlined, MessageOutlined} from '@ant-design/icons';
+import {Button, List, notification, PageHeader, Space} from "antd";
+import {StarOutlined, DollarOutlined} from '@ant-design/icons';
 import {AuthContext} from "../../components/AuthProvider";
 import {OrderModal} from "./OrderModal";
 
@@ -48,7 +48,9 @@ export const ToursPage: FC = () => {
     }
   }
 
-  return <><List
+  return <>
+    <PageHeader title='Туры' />
+    <List
     itemLayout="vertical"
     size="large"
     loading={loading}
@@ -59,7 +61,7 @@ export const ToursPage: FC = () => {
         key={item.id}
         actions={[
           <IconText icon={StarOutlined} text={item?.star} key="list-vertical-star-o"/>,
-          <IconText icon={MessageOutlined} text={item?.price} key="list-vertical-message"/>,
+          <IconText icon={DollarOutlined} text={item?.price} key="list-vertical-message"/>,
         ]}
         extra={
           authContext?.authenticated ?

@@ -25,6 +25,7 @@ import { OrderModule } from './order.module';
       entities: [User, Tour, Order],
       synchronize: true,
       ssl: true,
+      logging: 'all',
       extra: {
         ssl: {
           rejectUnauthorized: false,

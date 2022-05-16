@@ -12,4 +12,11 @@ export class OrderService {
   create(entity: Order): Promise<Order> {
     return this.orderRepository.save(entity);
   }
+
+  find(user: number): Promise<Order[]> {
+    return this.orderRepository.find({
+      relations: ['tour'],
+      where: { user: { id: user } },
+    });
+  }
 }

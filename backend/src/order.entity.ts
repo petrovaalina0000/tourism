@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Tour } from './tour.entity';
@@ -13,12 +14,10 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToMany(() => Tour)
-  @JoinTable()
+  @ManyToOne(() => Tour)
   tour: Tour;
 
-  @ManyToMany(() => User)
-  @JoinTable()
+  @ManyToOne(() => User)
   user: User;
 
   @Column()
