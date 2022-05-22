@@ -9,7 +9,7 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  background: #fefefe
 }
 
 #root{
@@ -17,7 +17,6 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -10,6 +10,6 @@ export class TourService {
   ) {}
 
   find(): Promise<Tour[]> {
-    return this.tourRepository.find();
+    return this.tourRepository.find({ relations: ['images'] });
   }
 }

@@ -8,6 +8,7 @@ import { TourModule } from './tour.module';
 import { Tour } from './tour.entity';
 import { Order } from './order.entity';
 import { OrderModule } from './order.module';
+import { Image } from './image.entity';
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { OrderModule } from './order.module';
       password:
         '5708f4d254e0890aa0a90860c6fcdef5caf08097d72665da4050a9d3147f5903',
       database: 'de6gi4nl1utk1p',
-      entities: [User, Tour, Order],
+      entities: [User, Tour, Order, Image],
       synchronize: true,
       ssl: true,
       logging: 'all',

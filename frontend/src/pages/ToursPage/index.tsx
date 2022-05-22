@@ -1,6 +1,6 @@
 import {FC, useEffect, useState, createElement, useContext} from "react";
-import {Button, List, notification, PageHeader, Space} from "antd";
-import {StarOutlined, DollarOutlined} from '@ant-design/icons';
+import {Button, Carousel, List, notification, PageHeader, Row, Space, Typography} from "antd";
+import {StarOutlined} from '@ant-design/icons';
 import {AuthContext} from "../../components/AuthProvider";
 import {OrderModal} from "./OrderModal";
 
@@ -48,35 +48,36 @@ export const ToursPage: FC = () => {
     }
   }
 
-  return <>
-    <PageHeader title='Туры' />
+  return <div style={{padding: '16px'}}>
+    <PageHeader title={<Typography.Title level={2}>Доступные туры</Typography.Title>}/>
     <List
-    itemLayout="vertical"
-    size="large"
-    loading={loading}
-    dataSource={data}
+      itemLayout="vertical"
+      size="large"
+      loading={loading}
+      dataSource={data}
 
-    renderItem={(item: any) => (
-      <List.Item
-        key={item.id}
-        actions={[
-          <IconText icon={StarOutlined} text={item?.star} key="list-vertical-star-o"/>,
-          <IconText icon={DollarOutlined} text={item?.price} key="list-vertical-message"/>,
-        ]}
-        extra={
-          authContext?.authenticated ?
-            <Button type='primary' onClick={() => handleClick(item?.id)}>Заказать</Button> : null
-        }
-      >
-        <List.Item.Meta
-          title={item?.country}
-          description={item?.hotel}
+      renderItem={(item: any) => (
+        <List.Item
+          key={item.id}
+          extra={<><Row justify='end'><Typography.Title level={3}>{`${item?.price} $`}</Typography.Title></Row><Row>{
+            authContext?.authenticated ?
+              <Button type='link' onClick={() => handleClick(item?.id)}
+                      style={{paddingRight: 0}}>Заказать</Button> : null}</Row></>
+          }
+        >
+          <List.Item.Meta
+            avatar={<div style={{width:'200px'}}><Carousel>{item?.images?.map((image: any) => <div><img
+              src={`/images/${image?.image}`} style={{width: '200px'}}/>
+            </div>)}</Carousel></div>}
+            title={item?.country}
+            description={<><Row>{item?.hotel}</Row><Row><IconText icon={StarOutlined} text={item?.star}
+                                                                  key="list-vertical-star-o"/></Row></>}
 
-        />
-        {item.content}
-      </List.Item>
-    )}
-  />
+          />
+          {item.content}
+        </List.Item>
+      )}
+    />
     <OrderModal visible={!!selected} onOk={handleOrder} onCancel={() => setSelected(undefined)}/>
-  </>
+  </div>
 }

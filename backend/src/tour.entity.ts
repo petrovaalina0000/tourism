@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { Image } from './image.entity';
 
 @Entity('tour')
 export class Tour {
@@ -16,4 +23,8 @@ export class Tour {
 
   @Column()
   star: number;
+
+  @ManyToMany(() => Image)
+  @JoinTable()
+  images: Image[];
 }

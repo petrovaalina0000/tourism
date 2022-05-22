@@ -11,21 +11,26 @@ export const Header: FC = () => {
     authContext?.logout();
   }
 
-  return <div className={styles.container}>
-    <Row align='middle' gutter={16}>
-      <Col flex={1}><Link to='/'><Typography.Title level={3}>Турагенство Петрова</Typography.Title></Link></Col>
-      {!authContext?.authenticated ? <>
-          <Col><Link to='/login'><Typography.Link>Войти</Typography.Link></Link></Col>
-          <Col><Link to='/register'><Typography.Link>Зарегистрироваться</Typography.Link></Link></Col>
-        </> :
-        <>
-          <Col>
-            <Dropdown overlay={<Menu><Menu.Item key='orders'><Link to='/orders'>Мои заказы</Link></Menu.Item><Menu.Item
-              onClick={handleLogOut} key='logout'>Выйти</Menu.Item></Menu>}>
-              <Typography.Link>Пользователь</Typography.Link>
-            </Dropdown>
-          </Col>
-        </>}
-    </Row>
+  return <div style={{background: `url(/images/bg_beach.jpg)`, minHeight: '150px'}}>
+    <div className={styles.overlay}>
+      <Row align='middle' gutter={16}>
+        <Col flex={1}><Link to='/'><Typography.Text style={{color: 'white'}}>Турагентсво
+          Петрова</Typography.Text></Link></Col>
+        {!authContext?.authenticated ? <>
+            <Col><Link to='/login'><Typography.Link style={{color: 'white'}}>Войти</Typography.Link></Link></Col>
+            <Col><Link to='/register'><Typography.Link
+              style={{color: 'white'}}>Зарегистрироваться</Typography.Link></Link></Col>
+          </> :
+          <>
+            <Col>
+              <Dropdown
+                overlay={<Menu><Menu.Item key='orders'><Link to='/orders'>Мои заказы</Link></Menu.Item><Menu.Item
+                  onClick={handleLogOut} key='logout'>Выйти</Menu.Item></Menu>}>
+                <Typography.Link style={{color: 'white'}}>Пользователь</Typography.Link>
+              </Dropdown>
+            </Col>
+          </>}
+      </Row>
+    </div>
   </div>
 }
